@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>زيارة ميدانية لقسم التقنيات المعمارية - المعهد العالي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #003366;
+            --accent-yellow: #ffcc00;
+            --bg-light: #f4f7f6;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--page-bg);
+            margin: 0;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: var(--primary-blue);
+            padding: 20px 0;
+            color: white;
+            text-align: center;
+            border-bottom: 5px solid var(--accent-yellow);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 20px 0;
+            text-decoration: none;
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .main-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .main-img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .category {
+            background: #eef2f6;
+            color: var(--primary-blue);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        h1 {
+            color: var(--primary-blue);
+            font-size: 2.2rem;
+            margin: 20px 0;
+        }
+
+        .date {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            display: block;
+        }
+
+        .text-content {
+            font-size: 1.15rem;
+            text-align: justify;
+        }
+
+        .info-box {
+            background: #fffbe6;
+            border-right: 5px solid var(--accent-yellow);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+
+        /* تنسيق معرض الصور */
+        .gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.02);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: #eee;
+            margin-top: 50px;
+        }
+    
+        /* Dark/Light theme support */
+        :root {
+            --page-bg: #f8f9fa;
+            --page-text: #2d3436;
+            --card-bg: #ffffff;
+            --muted-text: #636e72;
+            --border-col: #eee;
+        }
+        [data-theme="dark"] {
+            --page-bg: #0b1120;
+            --page-text: #e2e8f0;
+            --card-bg: #1e293b;
+            --muted-text: #94a3b8;
+            --border-col: rgba(255,255,255,0.1);
+        }
+
+        </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<header style="position:relative;">
+    <div class="container">
+        <h2 style="margin:0;">المعهد العالي للعلوم والتقنية سوق الجمعة</h2>
+    </div>
+
+        <button id="theme-toggle-news" style="
+            position: absolute; left: 20px; top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3);
+            color: white; padding: 8px 12px; border-radius: 50%; cursor: pointer;
+            font-size: 1rem; display:flex; align-items:center; justify-content:center;
+        "><i class="fas fa-moon"></i></button>
+</header>
+
+<div class="container">
+    <a href="index.html" class="back-link">← العودة للرئيسية</a>
+
+    <article class="main-card">
+        <img src="444.jpeg" class="main-img" alt="زيارة ميدانية">
+
+        <div class="content">
+            <span class="category">قسم التقنيات المعمارية</span>
+            <h1>زيارة ميدانية لتطوير المهارات العملية لطالبات الهندسة المعمارية</h1>
+            
+            <span class="date"> الخميس، 16 أكتوبر 2025</span>
+
+            <div class="text-content">
+                <p>في إطار سعي قسم التقنيات المعمارية إلى تطوير المهارات الخاصة بطالبات القسم وتأهيلهن في الجوانب العملية والعلمية وذلك عن طريق الزيارات الميدانية.</p>
+                
+                <p>تم يوم الخميس 2025/10/16 القيام بزيارة ميدانية بإشراف <b>م.عبد الله عمرو</b>، ومنسقة التدريب الميداني <b>م.أمل</b> لبعض المباني التجارية تحت الإنشاء بالقرب من المعهد العالي للعلوم والتقنية سوق الجمعة.</p>
+
+                <div class="info-box">
+                    <strong>الهدف من الزيارة:</strong><br>
+                    محاكاة وربط الجانب النظري والأكاديمي بالجانب العملي، حيث منحت الزيارة فرصة للطالبات لمشاهدة الأعمال الإنشائية على أرض الواقع.
+                </div>
+
+                <p>تم خلال هذه الزيارة شرح أعمال النجارة للسقف وكيفية استلامها، وكذلك أعمال حدادة الكمرات والبلاطات والكثير من الملاحظات والمعلومات الهندسية التي تخص المهندس.</p>
+
+                <h3 style="color: var(--primary-blue); margin-top: 40px;">شكر وتقدير</h3>
+                <p>ختاماً نتقدم بجزيل الشكر والتقدير لـ <b>شركة فالكون للإنشاءات</b>، والأستاذ <b>خالد الشيخ</b> والمهندس <b>محمد حتاش</b> على تعاونهم ورحابة صدورهم وتسهيل مهام الزيارة.</p>
+            </div>
+
+            <div class="gallery">
+                <img src="ff.jpeg" alt="طالبات القسم">
+                <img src="dd.jpeg" alt="شرح ميداني">
+            </div>
+        </div>
+    </article>
+</div>
+
+<footer>
+    <p>© 2025 قسم التقنيات المعمارية - المكتب الإعلامي للمعهد</p>
+</footer>
+
+
+    <script>
+    (function() {
+        // Apply saved theme immediately
+        const saved = localStorage.getItem('theme');
+        if (saved) document.documentElement.setAttribute('data-theme', saved);
+        else if (!window.matchMedia('(prefers-color-scheme: dark)').matches)
+            document.documentElement.setAttribute('data-theme', 'light');
+
+        window.addEventListener('DOMContentLoaded', function() {
+            const btn = document.getElementById('theme-toggle-news');
+            if (!btn) return;
+            const icon = btn.querySelector('i');
+            const cur = () => document.documentElement.getAttribute('data-theme');
+            const updateIcon = (t) => {
+                icon.className = t === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+            };
+            updateIcon(cur() || 'dark');
+            btn.addEventListener('click', () => {
+                const n = cur() === 'light' ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', n);
+                localStorage.setItem('theme', n);
+                updateIcon(n);
+            });
+        });
+    })();
+    </script>
+
+</body>
+</html>

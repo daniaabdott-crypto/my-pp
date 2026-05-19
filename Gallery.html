@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المعهد في الأرقام | المعهد العالي للعلوم والتقنية</title>
+    <link rel="stylesheet" href="style.css"> <!-- ربط ملف التنسيق الأصلي -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- الهيدر (ثابت كما في index_4.html) -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="11.jpg" alt="شعار المعهد" class="institute-logo">
+                <span>المعهد العالي للعلوم والتقنية</span>
+            </div>
+            <nav class="nav">
+                 <ul>
+        <li><a href="index.html">الرئيسية</a></li>
+        <li class="dropdown">
+            <a href="#">عن المعهد <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+                <li><a href="vision.html">نبذة عن المعهد</a></li>
+                <li><a href="manager.html">كلمة مدير المعهد</a></li>
+                <li><a href="goals.html">الرؤية و الرسالة و الاهداف</a></li>
+                <li><a href="gallery.html">الحقائق و الارقام</a></li>
+                <li><a href="testimonials.html">الهويه البصرية للشعار </a></li>
+            </ul>
+        </li>
+           <!-- صح - داخل <li> -->
+<li><a href="academics.html">الشؤون الأكاديمية</a></li>
+<li><a href="register.html">تسجيل الطالبات</a></li>
+            
+        <li><a href="contact.html">تواصل معنا</a></li>
+    </ul>
+            </nav>
+            <div class="header-actions" style="display: flex; align-items: center; gap: 15px;">
+                <button id="theme-toggle" class="theme-btn" aria-label="تبديل المظهر">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger"><i class="fas fa-bars"></i></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- واجهة الصفحة -->
+    <section class="page-hero-small stats-hero">
+        <div class="container">
+            <h1>المعهد في الأرقام</h1>
+            <p>إنجازاتنا الأكاديمية والتقنية مترجمة إلى لغة الأرقام</p>
+        </div>
+    </section>
+
+    <!-- قسم العدادات الرقمية -->
+    <section class="stats-content section-padding">
+        <div class="container">
+            <div class="stats-intro">
+                <h2>فخورون بمسيرتنا</h2>
+                <p>تعكس هذه الأرقام حجم الجهود المبذولة لتطوير التعليم التقني في منطقتنا.</p>
+            </div>
+
+            <div class="facts-container" style="margin-top: 50px;">
+                <!-- الخريجين -->
+                <div class="fact-card">
+                    <div class="icon-box"><i class="fas fa-user-graduate" style="font-size: 40px; color: #003366;"></i></div>
+                    <h3 class="counter" data-target="3000">0</h3>
+                    <p>خريج وخريجة</p>
+                </div>
+                <!-- الأقسام -->
+                <div class="fact-card">
+                    <div class="icon-box"><i class="fas fa-th-large" style="font-size: 40px; color: #003366;"></i></div>
+                    <h3 class="counter" data-target="6">0</h3>
+                    <p>أقسام علمية</p>
+                </div>
+                <!-- الطلاب -->
+                <div class="fact-card">
+                    <div class="icon-box"><i class="fas fa-users" style="font-size: 40px; color: #003366;"></i></div>
+                    <h3 class="counter" data-target="6400">0</h3>
+                    <p>طالب مقيد</p>
+                </div>
+                <!-- طاقم التدريس -->
+                <div class="fact-card">
+                    <div class="icon-box"><i class="fas fa-chalkboard-teacher" style="font-size: 40px; color: #003366;"></i></div>
+                    <h3 class="counter" data-target="500">0</h3>
+                    <p>عضو هيئة تدريس</p>
+                </div>
+            </div>
+
+            <!-- تفاصيل إضافية -->
+            <div class="extra-stats">
+                <div class="stat-detail-item">
+                    <i class="fas fa-microscope"></i>
+                    <h4>8 مختبرات متطورة</h4>
+                </div>
+                <div class="stat-detail-item">
+                    <i class="fas fa-book-reader"></i>
+                    <h4>المكتبة المركزية (10,000+ كتاب)</h4>
+                </div>
+                <div class="stat-detail-item">
+                    <i class="fas fa-handshake"></i>
+                    <h4>12 اتفاقية تعاون محلي</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>المعهد العالي للعلوم والتقنية</h3>
+                    <p>نعمل على تمكين الكوادر الوطنية من خلال تعليم تقني متميز يواكب التطورات العالمية ويخدم متطلبات سوق العمل.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="about.html"><i class="fas fa-angle-left"></i> عن المعهد</a></li>
+                        <li><a href="departments.html"><i class="fas fa-angle-left"></i> التخصصات</a></li>
+                        <li><a href="register.html"><i class="fas fa-angle-left"></i> تسجيل الطالبات</a></li>
+                        <li><a href="skills.html"><i class="fas fa-angle-left"></i> المهارات</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>الدعم</h3>
+                    <ul>
+                        <li><a href="contact.html"><i class="fas fa-angle-left"></i> تواصل معنا</a></li>
+                        <li><a href="#"><i class="fas fa-angle-left"></i> الأسئلة الشائعة</a></li>
+                        <li><a href="#"><i class="fas fa-angle-left"></i> سياسة الخصوصية</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>تواصل مباشر</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> سوق الجمعة، ليبيا</p>
+                    <p><i class="fas fa-envelope"></i> info@college-tech.ly</p>
+                    <p dir="ltr" style="text-align: right;"><i class="fas fa-phone"></i> +218 917-216-172</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 المعهد العالي للعلوم والتقنية. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- إضافة السكريبت الخاص بالعدادات المذكور في ملفك الأصلي -->
+    <script>
+        const startCounter = (counter) => {
+            counter.innerText = '0';
+            const target = +counter.getAttribute('data-target');
+            let count = 0;
+            const speed = target / 20; 
+
+            const update = () => {
+                if (count < target) {
+                    count += speed;
+                    counter.innerText = Math.ceil(count).toLocaleString();
+                    setTimeout(update, 30);
+                } else {
+                    counter.innerText = target.toLocaleString();
+                }
+            };
+            update();
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startCounter(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        window.addEventListener('load', () => {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => observer.observe(counter));
+        });
+    </script>
+
+    <script>
+    (function() {
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        if (!themeToggleBtn) return;
+        const themeIcon = themeToggleBtn.querySelector('i');
+
+        const getCurrentTheme = () => document.documentElement.getAttribute('data-theme');
+
+        const updateIcon = (theme) => {
+            if (!themeIcon) return;
+            if (theme === 'light') {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        };
+
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateIcon(savedTheme);
+        } else if (!systemPrefersDark) {
+            document.documentElement.setAttribute('data-theme', 'light');
+            updateIcon('light');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            const isLight = getCurrentTheme() === 'light';
+            const newTheme = isLight ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon(newTheme);
+        });
+    })();
+    </script>
+
+</body>
+</html>

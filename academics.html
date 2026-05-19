@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الشؤون الأكاديمية | المعهد العالي للعلوم والتقنية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --navy: #002855;
+            --navy-mid: #003d80;
+            --gold: #c9a84c;
+            --gold-light: #f0c84a;
+            --white: #ffffff;
+            --off-white: #f8f9fc;
+            --gray-100: #f1f4f9;
+            --gray-200: #e2e8f0;
+            --gray-500: #718096;
+            --gray-700: #2d3748;
+            --radius: 16px;
+            --shadow: 0 8px 32px rgba(0,40,85,0.10);
+            --shadow-hover: 0 16px 48px rgba(0,40,85,0.16);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cairo', sans-serif; background: var(--off-white); color: var(--gray-700); }
+
+        /* HEADER */
+        .header {
+            background: var(--navy);
+            height: 70px;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo img { height: 44px; border-radius: 8px; }
+        .logo span { color: white; font-weight: 700; font-size: 1rem; }
+        .back-btn {
+            color: var(--gold-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 8px 16px;
+            border: 1px solid rgba(201,168,76,0.3);
+            border-radius: 8px;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .back-btn:hover { background: rgba(201,168,76,0.1); }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, var(--navy) 0%, #004080 60%, #005799 100%);
+            padding: 65px 40px 75px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: var(--off-white);
+            clip-path: ellipse(55% 100% at 50% 100%);
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(201,168,76,0.15);
+            border: 1px solid rgba(201,168,76,0.35);
+            color: var(--gold-light);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+        .hero h1 { color: white; font-size: 2.8rem; font-weight: 900; margin-bottom: 12px; }
+        .hero p { color: rgba(255,255,255,0.75); font-size: 1.05rem; }
+
+        /* TABS */
+        .tabs-bar {
+            background: white;
+            border-bottom: 2px solid var(--gray-200);
+            position: sticky;
+            top: 70px;
+            z-index: 99;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+        }
+        .tabs-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            overflow-x: auto;
+        }
+        .tab-btn {
+            padding: 17px 26px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            color: var(--gray-500);
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.93rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: 0.3s;
+            margin-bottom: -2px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+        .tab-btn:hover { color: var(--navy); }
+        .tab-btn.active { color: var(--navy); border-bottom-color: var(--gold); }
+
+        /* CONTENT */
+        .content { max-width: 1200px; margin: 0 auto; padding: 50px 40px; }
+        .tab-panel { display: none; animation: fadeUp 0.4s ease; }
+        .tab-panel.active { display: block; }
+        @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+
+        .sec-title { margin-bottom: 36px; }
+        .sec-title h2 { font-size: 1.85rem; font-weight: 800; color: var(--navy); margin-bottom: 6px; }
+        .sec-title p { color: var(--gray-500); }
+        .sec-title .line { width: 55px; height: 4px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); border-radius: 2px; margin-top: 10px; }
+
+        /* ===== SPECIALTIES ===== */
+        .spec-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+        .spec-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: 0.3s;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        .spec-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); border-color: var(--gold); }
+        .spec-header {
+            padding: 28px 24px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .spec-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            flex-shrink: 0;
+        }
+        .spec-card h3 { font-size: 1.05rem; font-weight: 800; color: var(--navy); margin-bottom: 4px; }
+        .spec-card .head-title { font-size: 0.8rem; color: var(--gray-500); }
+        .spec-body { padding: 0 24px 24px; }
+        .spec-body p { font-size: 0.88rem; color: var(--gray-500); line-height: 1.7; margin-bottom: 16px; }
+        .spec-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+        .tag {
+            background: var(--gray-100);
+            color: var(--navy);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 50px;
+        }
+        .spec-footer {
+            padding: 14px 24px;
+            background: var(--gray-100);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.82rem;
+        }
+        .spec-footer span { color: var(--gray-500); }
+        .spec-footer .badge {
+            background: var(--navy);
+            color: white;
+            padding: 3px 12px;
+            border-radius: 50px;
+            font-weight: 700;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .modal-overlay.open { display: flex; }
+        .modal {
+            background: white;
+            border-radius: 20px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+            animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes slideUp { from { transform: translateY(40px); opacity:0; } to { transform: translateY(0); opacity:1; } }
+        .modal-header {
+            padding: 28px 32px 20px;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .modal-header h2 { font-size: 1.3rem; font-weight: 800; color: var(--navy); }
+        .modal-close {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: var(--gray-100);
+            cursor: pointer;
+            font-size: 1rem;
+            color: var(--gray-700);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+        .modal-close:hover { background: var(--gray-200); }
+        .modal-body { padding: 28px 32px; }
+        .modal-body h4 { color: var(--navy); font-size: 1rem; font-weight: 700; margin: 20px 0 10px; }
+        .modal-body h4:first-child { margin-top: 0; }
+        .course-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .course-item {
+            background: var(--gray-100);
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            color: var(--gray-700);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .course-item::before { content:'●'; color: var(--gold); font-size:0.65rem; flex-shrink:0; }
+        .faculty-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+        .faculty-table th { background: var(--navy); color: white; padding: 10px 14px; text-align: right; }
+        .faculty-table td { padding: 10px 14px; border-bottom: 1px solid var(--gray-100); }
+        .faculty-table tr:last-child td { border-bottom: none; }
+        .faculty-table tr:nth-child(even) td { background: var(--off-white); }
+
+        /* ===== SCHEDULES ===== */
+        .schedule-controls {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
+        .ctl-select {
+            padding: 10px 16px;
+            border: 2px solid var(--gray-200);
+            border-radius: 10px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.92rem;
+            color: var(--gray-700);
+            background: white;
+            cursor: pointer;
+            outline: none;
+            transition: 0.3s;
+        }
+        .ctl-select:focus { border-color: var(--navy); }
+        .schedule-table-wrapper {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        .schedule-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+        .schedule-table thead tr { background: var(--navy); color: white; }
+        .schedule-table th { padding: 14px 16px; text-align: center; font-weight: 600; }
+        .schedule-table td { padding: 12px 14px; text-align: center; border-bottom: 1px solid var(--gray-100); vertical-align: middle; }
+        .schedule-table tbody tr:nth-child(even) td { background: var(--off-white); }
+        .schedule-table tbody tr:hover td { background: #eef2ff; }
+        .time-cell { font-weight: 700; color: var(--navy); white-space: nowrap; }
+        .subject-pill {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        .pill-it { background: #e0f0ff; color: #0066cc; }
+        .pill-math { background: #fff3e0; color: #e65100; }
+        .pill-lang { background: #f3e5f5; color: #7b1fa2; }
+        .pill-lab { background: #e8f5e9; color: #2e7d32; }
+        .pill-free { background: var(--gray-100); color: var(--gray-500); }
+        .pill-arch { background: #fce4ec; color: #c62828; }
+        .pill-biz { background: #e8eaf6; color: #283593; }
+
+        /* ===== RESULTS ===== */
+        .results-search {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+        .search-box {
+            flex: 1;
+            position: relative;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 14px 20px 14px 50px;
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: 0.3s;
+        }
+        .search-box input:focus { border-color: var(--navy); }
+        .search-box i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-500);
+        }
+        .search-btn {
+            background: var(--navy);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .search-btn:hover { background: var(--navy-mid); }
+        .results-empty {
+            text-align: center;
+            padding: 60px 20px;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        .results-empty i { font-size: 3rem; color: var(--gray-200); margin-bottom: 16px; display: block; }
+        .results-empty h3 { color: var(--gray-500); font-size: 1.1rem; margin-bottom: 8px; }
+        .results-empty p { color: var(--gray-500); font-size: 0.88rem; }
+        .result-card {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            display: none;
+        }
+        .result-card.visible { display: block; animation: fadeUp 0.4s ease; }
+        .result-header {
+            background: linear-gradient(135deg, var(--navy), #004080);
+            padding: 24px 32px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .result-header h3 { font-size: 1.1rem; font-weight: 700; }
+        .result-header p { font-size: 0.85rem; opacity: 0.8; margin-top: 4px; }
+        .gpa-badge {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--gold-light);
+        }
+        .subjects-results { padding: 28px 32px; }
+        .subject-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .subject-row:last-child { border-bottom: none; }
+        .sub-name { font-weight: 600; color: var(--gray-700); font-size: 0.92rem; }
+        .sub-grade {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .grade-num {
+            font-weight: 800;
+            font-size: 1.05rem;
+            min-width: 36px;
+            text-align: center;
+        }
+        .grade-bar {
+            width: 120px;
+            height: 8px;
+            background: var(--gray-200);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .grade-fill { height: 100%; border-radius: 4px; }
+        .grade-letter {
+            font-weight: 700;
+            font-size: 0.88rem;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        /* ===== FACULTY ===== */
+        .faculty-filter {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 8px 18px;
+            border: 2px solid var(--gray-200);
+            border-radius: 50px;
+            background: white;
+            color: var(--gray-700);
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .filter-btn:hover { border-color: var(--navy); color: var(--navy); }
+        .filter-btn.active { background: var(--navy); color: white; border-color: var(--navy); }
+        .faculty-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+        .faculty-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 24px 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: 0.3s;
+        }
+        .faculty-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+        .faculty-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            margin: 0 auto 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: white;
+            font-weight: 700;
+        }
+        .faculty-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 5px; }
+        .faculty-card .title { font-size: 0.8rem; color: var(--gray-500); margin-bottom: 8px; }
+        .dept-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 3px 12px;
+            border-radius: 50px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--navy);
+            color: rgba(255,255,255,0.65);
+            text-align: center;
+            padding: 28px;
+            font-size: 0.86rem;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .content { padding: 30px 20px; }
+            .hero h1 { font-size: 2rem; }
+            .spec-grid { grid-template-columns: 1fr; }
+            .faculty-grid { grid-template-columns: repeat(2, 1fr); }
+            .course-grid { grid-template-columns: 1fr; }
+            .results-search { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img src="11.jpg" alt="شعار المعهد">
+            <span>المعهد العالي للعلوم والتقنية</span>
+        </a>
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-right"></i> الرئيسية
+        </a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-badge"><i class="fas fa-university"></i> العام الدراسي 2025/2026</div>
+        <h1>الشؤون الأكاديمية</h1>
+        <p>التخصصات · الجداول الدراسية · نتائج الامتحانات · أعضاء هيئة التدريس</p>
+    </section>
+
+    <div class="tabs-bar">
+        <div class="tabs-inner">
+            <button class="tab-btn active" onclick="switchTab('specialties', this)">
+                <i class="fas fa-layer-group"></i> التخصصات
+            </button>
+            <button class="tab-btn" onclick="switchTab('schedules', this)">
+                <i class="fas fa-calendar-days"></i> الجداول الدراسية
+            </button>
+            <button class="tab-btn" onclick="switchTab('results', this)">
+                <i class="fas fa-chart-bar"></i> نتائج الامتحانات
+            </button>
+            <button class="tab-btn" onclick="switchTab('faculty', this)">
+                <i class="fas fa-chalkboard-user"></i> هيئة التدريس
+            </button>
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- ===== SPECIALTIES ===== -->
+        <div id="tab-specialties" class="tab-panel active">
+            <div class="sec-title">
+                <h2>التخصصات الأكاديمية</h2>
+                <p>اضغطي على أي تخصص لعرض التفاصيل الكاملة</p>
+                <div class="line"></div>
+            </div>
+            <div class="spec-grid">
+
+                <div class="spec-card" onclick="openModal('it')">
+                    <div class="spec-header">
+                        <div class="spec-icon" style="background:linear-gradient(135deg,#0052cc,#0073e6);">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div>
+                            <h3>برمجة وتحليل نظم</h3>
+                            <div class="head-title">رئيسة القسم: أ. مبروكة خليفة كركب</div>
+                        </div>
+                    </div>
+                    <div class="spec-body">
+                        <p>يُعدّ هذا القسم من أكثر التخصصات طلباً في سوق العمل، إذ يُزوّد الطالبات بمهارات البرمجة وتحليل وتصميم الأنظمة والتطبيقات.</p>
+                        <div class="spec-tags">
+                            <span class="tag">لغات البرمجة</span>
+                            <span class="tag">قواعد البيانات</span>
+                            <span class="tag">هندسة البرمجيات</span>
+                            <span class="tag">تطوير الويب</span>
+                        </div>
+                    </div>
+                    <div class="spec-footer">
+                        <span><i class="fas fa-users" style="margin-left:5px;"></i> 40 طالبة / فصل</span>
+                        <span class="badge">6 فصول</span>
+                    </div>
+                </div>
+
+                <div class="spec-card" onclick="openModal('telecom')">
+                    <div class="spec-header">
+                        <div class="spec-icon" style="background:linear-gradient(135deg,#c0392b,#e74c3c);">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <div>
+                            <h3>اتصالات</h3>
+                            <div class="head-title">رئيس القسم: أ. [اسم رئيس القسم]</div>
+                        </div>
+                    </div>
+                    <div class="spec-body">
+                        <p>يغطي هذا التخصص أساسيات الشبكات، الألياف الضوئية، البروتوكولات، وأنظمة الاتصالات الحديثة ويُعدّ الطالبات لسوق الاتصالات المتنامي.</p>
+                        <div class="spec-tags">
+                            <span class="tag">شبكات الحاسوب</span>
+                            <span class="tag">ألياف ضوئية</span>
+                            <span class="tag">5G</span>
+                            <span class="tag">إلكترونيات</span>
+                        </div>
+                    </div>
+                    <div class="spec-footer">
+                        <span><i class="fas fa-users" style="margin-left:5px;"></i> 35 طالبة / فصل</span>
+                        <span class="badge">6 فصول</span>
+                    </div>
+                </div>
+
+                <div class="spec-card" onclick="openModal('arch')">
+                    <div class="spec-header">
+                        <div class="spec-icon" style="background:linear-gradient(135deg,#27ae60,#2ecc71);">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                        <div>
+                            <h3>تصميم معماري</h3>
+                            <div class="head-title">رئيس القسم: م. عبد الله عمرو</div>
+                        </div>
+                    </div>
+                    <div class="spec-body">
+                        <p>يجمع هذا التخصص بين الإبداع الهندسي والتقنية، ويُعدّ الطالبات لتصميم المباني والمنشآت بأحدث البرامج والأساليب المعمارية.</p>
+                        <div class="spec-tags">
+                            <span class="tag">AutoCAD</span>
+                            <span class="tag">Revit</span>
+                            <span class="tag">تصميم داخلي</span>
+                            <span class="tag">إنشاءات</span>
+                        </div>
+                    </div>
+                    <div class="spec-footer">
+                        <span><i class="fas fa-users" style="margin-left:5px;"></i> 40 طالبة / فصل</span>
+                        <span class="badge">6 فصول</span>
+                    </div>
+                </div>
+
+                <div class="spec-card" onclick="openModal('optics')">
+                    <div class="spec-header">
+                        <div class="spec-icon" style="background:linear-gradient(135deg,#8e44ad,#9b59b6);">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div>
+                            <h3>بصريات</h3>
+                            <div class="head-title">رئيس القسم: أ. [اسم رئيس القسم]</div>
+                        </div>
+                    </div>
+                    <div class="spec-body">
+                        <p>تخصص متميز يُجمع بين علوم الفيزياء البصرية وصحة العيون، يُؤهّل الطالبات للعمل في المجال الصحي كأخصائيات بصريات معتمدات.</p>
+                        <div class="spec-tags">
+                            <span class="tag">فيزياء بصرية</span>
+                            <span class="tag">تشريح العين</span>
+                            <span class="tag">عدسات لاصقة</span>
+                            <span class="tag">قياس البصر</span>
+                        </div>
+                    </div>
+                    <div class="spec-footer">
+                        <span><i class="fas fa-users" style="margin-left:5px;"></i> 30 طالبة / فصل</span>
+                        <span class="badge">6 فصول</span>
+                    </div>
+                </div>
+
+                <div class="spec-card" onclick="openModal('biz')">
+                    <div class="spec-header">
+                        <div class="spec-icon" style="background:linear-gradient(135deg,#d4a017,#f39c12);">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div>
+                            <h3>إدارة أعمال ومحاسبة</h3>
+                            <div class="head-title">رئيس القسم: أ. [اسم رئيس القسم]</div>
+                        </div>
+                    </div>
+                    <div class="spec-body">
+                        <p>يُجمع هذا التخصص بين مهارات الإدارة الحديثة والمحاسبة المالية، ويُعدّ الطالبات لشغل وظائف إدارية ومالية في القطاعين العام والخاص.</p>
+                        <div class="spec-tags">
+                            <span class="tag">محاسبة مالية</span>
+                            <span class="tag">إدارة موارد</span>
+                            <span class="tag">تسويق</span>
+                            <span class="tag">Excel متقدم</span>
+                        </div>
+                    </div>
+                    <div class="spec-footer">
+                        <span><i class="fas fa-users" style="margin-left:5px;"></i> 50 طالبة / فصل</span>
+                        <span class="badge">6 فصول</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ===== SCHEDULES ===== -->
+        <div id="tab-schedules" class="tab-panel">
+            <div class="sec-title">
+                <h2>الجداول الدراسية</h2>
+                <p>اختاري التخصص والفصل الدراسي لعرض الجدول</p>
+                <div class="line"></div>
+            </div>
+            <div class="schedule-controls">
+                <select class="ctl-select" id="schedDept" onchange="updateSchedule()">
+                    <option value="">اختاري التخصص</option>
+                    <option value="it">برمجة وتحليل نظم</option>
+                    <option value="telecom">اتصالات</option>
+                    <option value="arch">تصميم معماري</option>
+                    <option value="optics">بصريات</option>
+                    <option value="biz">إدارة أعمال ومحاسبة</option>
+                </select>
+                <select class="ctl-select" id="schedTerm" onchange="updateSchedule()">
+                    <option value="">اختاري الفصل</option>
+                    <option value="1">الفصل الأول</option>
+                    <option value="2">الفصل الثاني</option>
+                    <option value="3">الفصل الثالث</option>
+                    <option value="4">الفصل الرابع</option>
+                    <option value="5">الفصل الخامس</option>
+                    <option value="6">الفصل السادس</option>
+                </select>
+            </div>
+            <div id="scheduleContent">
+                <div class="results-empty">
+                    <i class="fas fa-calendar-xmark"></i>
+                    <h3>اختاري التخصص والفصل الدراسي</h3>
+                    <p>سيظهر الجدول الدراسي هنا بعد الاختيار</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== RESULTS ===== -->
+        <div id="tab-results" class="tab-panel">
+            <div class="sec-title">
+                <h2>نتائج الامتحانات</h2>
+                <p>أدخلي رقمك الجامعي للاطلاع على نتيجتك</p>
+                <div class="line"></div>
+            </div>
+            <div class="results-search">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="studentId" placeholder="أدخلي رقمك الجامعي  (مثال: 2025-1234)" maxlength="20">
+                </div>
+                <button class="search-btn" onclick="searchResults()">
+                    <i class="fas fa-magnifying-glass"></i> بحث
+                </button>
+            </div>
+            <div id="resultContent">
+                <div class="results-empty">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>ابحثي عن نتيجتك</h3>
+                    <p>أدخلي رقمك الجامعي في حقل البحث أعلاه</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== FACULTY ===== -->
+        <div id="tab-faculty" class="tab-panel">
+            <div class="sec-title">
+                <h2>أعضاء هيئة التدريس</h2>
+                <p>الكادر الأكاديمي المتميز للمعهد العالي للعلوم والتقنية</p>
+                <div class="line"></div>
+            </div>
+            <div class="faculty-filter">
+                <button class="filter-btn active" onclick="filterFaculty('all', this)">الكل</button>
+                <button class="filter-btn" onclick="filterFaculty('it', this)">برمجة وتحليل نظم</button>
+                <button class="filter-btn" onclick="filterFaculty('telecom', this)">اتصالات</button>
+                <button class="filter-btn" onclick="filterFaculty('arch', this)">تصميم معماري</button>
+                <button class="filter-btn" onclick="filterFaculty('optics', this)">بصريات</button>
+                <button class="filter-btn" onclick="filterFaculty('biz', this)">إدارة أعمال</button>
+            </div>
+            <div class="faculty-grid" id="facultyGrid">
+                <!-- IT -->
+                <div class="faculty-card" data-dept="it">
+                    <div class="faculty-avatar" style="background:linear-gradient(135deg,#0052cc,#0073e6);">د</div>
+                    <h4>د. إسماعيل إبراهيم</h4>
+                    <div class="title">أمن المعلومات</div>
+                    <span class="dept-tag" style="background:#e0f0ff; color:#0052cc;">برمجة وتحليل نظم</span>
+                </div>
+                <div class="faculty-card" data-dept="it">
+                    <div class="faculty-avatar" style="background:linear-gradient(135deg,#0052cc,#0073e6);">س</div>
+                    <h4>أ. سمية الاجطل</h4>
+                    <div class="title">لغات البرمجة</div>
+                    <span class="dept-tag" style="background:#e0f0ff; color:#0052cc;">برمجة وتحليل نظم</span>
+                </div>
+                <div class="faculty-card" data-dept="it">
+                    <div class="faculty-avatar" style="background:linear-gradient(135deg,#0052cc,#0073e6);">ع</div>
+                    <h4>أ. عصام الأسطى</h4>
+                    <div class="title">نظم التشغيل</div>
+                    <span class="dept-tag" style="background:#e0f0ff; color:#0052cc;">برمجة وتحليل نظم</span>
+                </div>
+                <div class="faculty-card" data-dept="it">
+                    <div class="faculty-avatar" style="background:linear-gradient(135deg,#0052cc,#0073e6);">م</div>
+                    <h4>أ. المبروك الغويل</h4>
+                    <div class="title">هندسة البرمجيات</div>
+                    <span class="dept-tag" style="background:#e0f0ff; color:#0052cc;">برمجة وتحليل نظم</span>
+                </div>
+                <div class="faculty-card" data-dept="it">
+                    <div class="faculty-avatar" style="background:linear-gradient(135deg,#0052cc,#0073e6);">د</div>
+                    <h4>د. محمد الفرجاني</h4>
+                    <div class="title">تحليل النظم</div>
+                    <span class="dept-tag" style="background:#e0f0ff; color:#0052cc;">برمجة وتحليل نظم</span>
+                </div>
+                <!-- TELECOM -->
+                <div class="faculty-card" data-dept="telecom">
+                    <div class="faculty-avatar" style="background:linear-gradient(135deg,#c0392b,#e74c3c);">م</div>
+                    <h4>م. خالد العربي</h4>
+                    <div class="title">شبكات الحاسوب</div>
+                    <span class="dept-tag" style="background:#fde8e8; color:#c0392b;">اتصالات</span>
+                </div>
+                <div class="faculty-card" data-dept="telecom">
+                    <div class="faculty-avatar" style="background:linear-gradient(135deg,#c0392b,#e74c3c);">ن</div>
+                    <h4>أ. نادية الزروق</h4>
+                    <div class="title">إلكترونيات وكهرباء</div>
+                    <span class="dept-tag" style="background:#fde8e8; color:#c0392b;">اتصالات</span>
+                </div>
+                <!-- ARCH -->
+                <div class="faculty-card" data-dept="arch">
+                    <div class="faculty-avatar" style="background:linear-gradient(135deg,#27ae60,#2ecc71);">ع</div>
+                    <h4>م. عبد الله عمرو</h4>
+                    <div class="title">إنشاءات وتصميم</div>
+                    <span class="dept-tag" style="background:#e8f8ee; color:#27ae60;">تصميم معماري</span>
+                </div>
+                <div class="faculty-card" data-dept="arch">
+                    <div class="faculty-avatar" style="background:linear-gradient(135deg,#27ae60,#2ecc71);">أ</div>
+                    <h4>م. أمل الورفلي</h4>
+                    <div class="title">تصميم داخلي</div>
+                    <span class="dept-tag" style="background:#e8f8ee; color:#27ae60;">تصميم معماري</span>
+                </div>
+                <!-- OPTICS -->
+                <div class="faculty-card" data-dept="optics">
+                    <div class="faculty-avatar" style="background:linear-gradient(135deg,#8e44ad,#9b59b6);">د</div>
+                    <h4>د. سالم المريمي</h4>
+                    <div class="title">فيزياء بصرية</div>
+                    <span class="dept-tag" style="background:#f5eaff; color:#8e44ad;">بصريات</span>
+                </div>
+                <!-- BIZ -->
+                <div class="faculty-card" data-dept="biz">
+                    <div class="faculty-avatar" style="background:linear-gradient(135deg,#d4a017,#f39c12);">م</div>
+                    <h4>أ. منى الشريف</h4>
+                    <div class="title">محاسبة مالية</div>
+                    <span class="dept-tag" style="background:#fff3cd; color:#d4a017;">إدارة أعمال</span>
+                </div>
+                <div class="faculty-card" data-dept="biz">
+                    <div class="faculty-avatar" style="background:linear-gradient(135deg,#d4a017,#f39c12);">ع</div>
+                    <h4>أ. عمر البوعيشي</h4>
+                    <div class="title">إدارة الموارد البشرية</div>
+                    <span class="dept-tag" style="background:#fff3cd; color:#d4a017;">إدارة أعمال</span>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- end .content -->
+
+    <!-- MODALS -->
+    <div class="modal-overlay" id="modal" onclick="closeModalOnOverlay(event)">
+        <div class="modal" id="modalContent"></div>
+    </div>
+
+    <footer>
+        <p>© 2026 المعهد العالي للعلوم والتقنية سوق الجمعة - جميع الحقوق محفوظة</p>
+    </footer>
+
+<script>
+// ---- TABS ----
+function switchTab(name, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    btn.classList.add('active');
+}
+
+// ---- SPECIALTIES MODAL DATA ----
+const specs = {
+    it: {
+        title: 'برمجة وتحليل نظم',
+        color: '#0052cc',
+        overview: 'يُركّز هذا التخصص على بناء مهارات قوية في لغات البرمجة الحديثة وتحليل وتصميم قواعد البيانات. البرنامج مصمم ليغطي 6 فصول دراسية تنتهي بمشروع تخرج تطبيقي يخدم سوق العمل.',
+        courses: ['البرمجة الشيئية OOP', 'تحليل وتصميم النظم', 'قواعد البيانات SQL', 'هندسة البرمجيات', 'تراكيب البيانات', 'تطوير تطبيقات الويب', 'الذكاء الاصطناعي', 'أمن المعلومات'],
+        faculty: [
+            ['د. إسماعيل إبراهيم', 'أمن المعلومات'],
+            ['أ. سمية الاجطل', 'لغات البرمجة'],
+            ['أ. عصام الأسطى', 'نظم التشغيل'],
+            ['أ. المبروك الغويل', 'هندسة البرمجيات'],
+            ['د. محمد الفرجاني', 'تحليل النظم']
+        ]
+    },
+    telecom: {
+        title: 'اتصالات',
+        color: '#c0392b',
+        overview: 'يغطي هذا التخصص أساسيات الشبكات، الألياف الضوئية، البروتوكولات، وأنظمة الاتصالات الحديثة. يُعدّ الطالبات لسوق الاتصالات المتنامي على المستوى المحلي والإقليمي.',
+        courses: ['شبكات الحاسوب', 'بروتوكولات الاتصال', 'ألياف ضوئية', 'إلكترونيات رقمية', 'معالجة الإشارات', 'شبكات لاسلكية', 'أنظمة الهاتف', 'تقنيات 5G'],
+        faculty: [
+            ['م. خالد العربي', 'شبكات الحاسوب'],
+            ['أ. نادية الزروق', 'إلكترونيات وكهرباء']
+        ]
+    },
+    arch: {
+        title: 'تصميم معماري',
+        color: '#27ae60',
+        overview: 'يجمع هذا التخصص بين الإبداع الهندسي والتقنية الحديثة، ويُعدّ الطالبات لتصميم المباني والمنشآت وتنفيذها وفق أحدث المعايير الدولية.',
+        courses: ['رسم معماري', 'AutoCAD', 'Revit BIM', 'إنشاءات مدنية', 'مواد البناء', 'تصميم داخلي', 'تخطيط عمراني', 'إشراف ميداني'],
+        faculty: [
+            ['م. عبد الله عمرو', 'إنشاءات وتصميم'],
+            ['م. أمل الورفلي', 'تصميم داخلي']
+        ]
+    },
+    optics: {
+        title: 'بصريات',
+        color: '#8e44ad',
+        overview: 'تخصص متميز يجمع بين علوم الفيزياء البصرية وصحة العيون، يُؤهّل الطالبات للعمل في المجال الصحي كأخصائيات بصريات معتمدات في المستشفيات والمراكز الطبية.',
+        courses: ['تشريح العين', 'فيزياء ضوئية', 'قياس البصر', 'عدسات لاصقة', 'صنع النظارات', 'أمراض العيون', 'بصريات قانونية', 'تدريب ميداني'],
+        faculty: [
+            ['د. سالم المريمي', 'فيزياء بصرية']
+        ]
+    },
+    biz: {
+        title: 'إدارة أعمال ومحاسبة',
+        color: '#d4a017',
+        overview: 'يُجمع هذا التخصص بين مهارات الإدارة الحديثة والمحاسبة المالية، ويُعدّ الطالبات لشغل وظائف إدارية ومالية في القطاعين العام والخاص.',
+        courses: ['محاسبة مالية', 'مبادئ الإدارة', 'تسويق وإعلان', 'إدارة الموارد البشرية', 'قانون تجاري', 'إحصاء تطبيقي', 'Excel للمحاسبة', 'ريادة الأعمال'],
+        faculty: [
+            ['أ. منى الشريف', 'محاسبة مالية'],
+            ['أ. عمر البوعيشي', 'إدارة الموارد البشرية']
+        ]
+    }
+};
+
+function openModal(key) {
+    const s = specs[key];
+    let facultyRows = s.faculty.map(f =>
+        `<tr><td>${f[0]}</td><td>${f[1]}</td></tr>`
+    ).join('');
+    let courseItems = s.courses.map(c => `<div class="course-item">${c}</div>`).join('');
+
+    document.getElementById('modalContent').innerHTML = `
+        <div class="modal-header">
+            <h2 style="color:${s.color}"><i class="fas fa-layer-group" style="margin-left:8px;"></i>${s.title}</h2>
+            <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+            <h4>نبذة عن التخصص</h4>
+            <p style="color:var(--gray-500); font-size:0.92rem; line-height:1.8;">${s.overview}</p>
+            <h4>المواد الدراسية الرئيسية</h4>
+            <div class="course-grid">${courseItems}</div>
+            <h4>أعضاء هيئة التدريس</h4>
+            <table class="faculty-table">
+                <thead><tr><th>اسم عضو هيئة التدريس</th><th>التخصص الدقيق</th></tr></thead>
+                <tbody>${facultyRows}</tbody>
+            </table>
+        </div>
+    `;
+    document.getElementById('modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+    document.getElementById('modal').classList.remove('open');
+    document.body.style.overflow = '';
+}
+function closeModalOnOverlay(e) {
+    if (e.target.id === 'modal') closeModal();
+}
+
+// ---- SCHEDULES ----
+const scheduleData = {
+    it: {
+        1: [
+            ['8:00 - 9:30', 'رياضيات تطبيقية', 'منطق وبنى', '-', '-', 'لغة عربية'],
+            ['9:45 - 11:15', 'أساسيات البرمجة', 'أساسيات البرمجة', 'قواعد بيانات', 'شبكات', 'إنجليزي'],
+            ['11:30 - 13:00', 'مختبر C++', '-', 'مختبر SQL', '-', '-'],
+        ]
+    }
+};
+
+function updateSchedule() {
+    const dept = document.getElementById('schedDept').value;
+    const term = document.getElementById('schedTerm').value;
+    if (!dept || !term) return;
+
+    const days = ['الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس'];
+    const deptNames = { it:'برمجة وتحليل نظم', telecom:'اتصالات', arch:'تصميم معماري', optics:'بصريات', biz:'إدارة أعمال ومحاسبة' };
+    const colors = { it:'pill-it', telecom:'pill-math', arch:'pill-arch', optics:'pill-lang', biz:'pill-biz' };
+    const cls = colors[dept];
+
+    // Generate demo schedule
+    const subjects = {
+        it: ['رياضيات', 'خوارزميات', 'قواعد بيانات', 'شبكات', 'مشروع'],
+        telecom: ['إلكترونيات', 'فيزياء', 'بروتوكولات', 'شبكات لاسلكية', 'مختبر'],
+        arch: ['رسم معماري', 'مواد بناء', 'AutoCAD', 'إنشاءات', 'تصميم داخلي'],
+        optics: ['فيزياء بصرية', 'تشريح', 'قياس بصر', 'مختبر', 'عدسات'],
+        biz: ['محاسبة', 'إدارة', 'تسويق', 'قانون', 'إحصاء']
+    };
+    const subs = subjects[dept];
+    const times = ['8:00 - 9:30', '9:45 - 11:15', '11:30 - 1:00', '1:15 - 2:45'];
+
+    let rows = times.map((t, i) => {
+        let cells = days.map((_, j) => {
+            if ((i + j) % 4 === 3) return `<td><span class="subject-pill pill-free">فراغ</span></td>`;
+            const sub = subs[(i + j) % subs.length];
+            return `<td><span class="subject-pill ${cls}">${sub}</span></td>`;
+        }).join('');
+        return `<tr><td class="time-cell">${t}</td>${cells}</tr>`;
+    }).join('');
+
+    document.getElementById('scheduleContent').innerHTML = `
+        <div style="margin-bottom:16px; font-weight:700; color:var(--navy); font-size:1rem;">
+            <i class="fas fa-calendar-check" style="color:var(--gold); margin-left:8px;"></i>
+            ${deptNames[dept]} - الفصل الدراسي ${term}
+        </div>
+        <div class="schedule-table-wrapper">
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>الوقت</th>
+                        ${days.map(d => `<th>${d}</th>`).join('')}
+                    </tr>
+                </thead>
+                <tbody>${rows}</tbody>
+            </table>
+        </div>
+        <p style="margin-top:14px; font-size:0.82rem; color:var(--gray-500);"><i class="fas fa-info-circle"></i> هذا جدول تمثيلي - يُرجى التواصل مع قسمك للجدول الرسمي</p>
+    `;
+}
+
+// ---- RESULTS ----
+const demoResults = {
+    '2025-1234': {
+        name: 'فاطمة الزهراء المبروك',
+        dept: 'برمجة وتحليل نظم',
+        term: 'الفصل الثاني',
+        gpa: '78',
+        subjects: [
+            { name: 'خوارزميات وتراكيب البيانات', grade: 85, letter: 'B+' },
+            { name: 'قواعد البيانات المتقدمة', grade: 92, letter: 'A' },
+            { name: 'هندسة البرمجيات', grade: 74, letter: 'C+' },
+            { name: 'شبكات الحاسوب', grade: 68, letter: 'C' },
+            { name: 'الرياضيات التطبيقية', grade: 80, letter: 'B' },
+            { name: 'اللغة الإنجليزية التقنية', grade: 76, letter: 'B-' },
+        ]
+    },
+    '2025-5678': {
+        name: 'مريم سالم الورفلي',
+        dept: 'تصميم معماري',
+        term: 'الفصل الأول',
+        gpa: '83',
+        subjects: [
+            { name: 'رسم معماري أساسي', grade: 88, letter: 'A-' },
+            { name: 'مواد البناء', grade: 79, letter: 'B' },
+            { name: 'AutoCAD متقدم', grade: 91, letter: 'A' },
+            { name: 'إنشاءات مدنية', grade: 72, letter: 'C+' },
+            { name: 'تصميم داخلي', grade: 86, letter: 'B+' },
+        ]
+    }
+};
+
+function gradeColor(g) {
+    if (g >= 90) return '#27ae60';
+    if (g >= 75) return '#2980b9';
+    if (g >= 60) return '#d4a017';
+    return '#e74c3c';
+}
+
+function searchResults() {
+    const id = document.getElementById('studentId').value.trim();
+    const data = demoResults[id];
+    if (!data) {
+        document.getElementById('resultContent').innerHTML = `
+            <div class="results-empty">
+                <i class="fas fa-face-frown"></i>
+                <h3>لم يُعثر على نتائج</h3>
+                <p>تأكدي من صحة الرقم الجامعي - جرّبي: 2025-1234 أو 2025-5678</p>
+            </div>`;
+        return;
+    }
+    let subjectRows = data.subjects.map(s => {
+        const col = gradeColor(s.grade);
+        return `
+            <div class="subject-row">
+                <span class="sub-name">${s.name}</span>
+                <div class="sub-grade">
+                    <span class="grade-num" style="color:${col};">${s.grade}</span>
+                    <div class="grade-bar"><div class="grade-fill" style="width:${s.grade}%; background:${col};"></div></div>
+                    <span class="grade-letter" style="color:${col};">${s.letter}</span>
+                </div>
+            </div>`;
+    }).join('');
+
+    document.getElementById('resultContent').innerHTML = `
+        <div class="result-card visible">
+            <div class="result-header">
+                <div>
+                    <h3>${data.name}</h3>
+                    <p>${data.dept} • ${data.term}</p>
+                </div>
+                <div>
+                    <div style="font-size:0.8rem; opacity:0.8; margin-bottom:4px;">المعدل التراكمي</div>
+                    <div class="gpa-badge">${data.gpa}%</div>
+                </div>
+            </div>
+            <div class="subjects-results">${subjectRows}</div>
+        </div>`;
+}
+
+document.getElementById('studentId').addEventListener('keyup', function(e) {
+    if (e.key === 'Enter') searchResults();
+});
+
+// ---- FACULTY FILTER ----
+function filterFaculty(dept, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.faculty-card').forEach(card => {
+        card.style.display = dept === 'all' || card.dataset.dept === dept ? '' : 'none';
+    });
+}
+</script>
+</body>
+</html>
